@@ -1,0 +1,8 @@
+{
+  "rules": {
+    "react/prop-types": "off",
+    "react/no-find-dom-node": "off",
+    "react/display-name": "off",
+    "react/no-string-refs": "off"
+  }
+}

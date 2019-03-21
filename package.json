@@ -1,0 +1,62 @@
+{
+  "name": "todo-list",
+  "version": "1.0.0",
+  "author": "Alexander Bulyga <rikani86@gmail.com>",
+  "private": true,
+  "scripts": {
+    "test": "jest",
+    "buildProd": "rm -rf dist && webpack --config webpack.prod.config.js",
+    "prodServer": "npm run buildProd && node ./server.js -p",
+    "devServer": "node ./server.js",
+    "analyzeProd": "webpack --config webpack.prod.config.js -a",
+    "analyzeDev": "webpack --config webpack.dev.config.js -a"
+  },
+  "dependencies": {
+    "express": "~4.16.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "autoprefixer": "^9.4.7",
+    "babel-eslint": "^9.0.0",
+    "babel-jest": "^24.5.0",
+    "babel-loader": "^8.0.5",
+    "classnames": "^2.2.6",
+    "css-loader": "^2.1.1",
+    "cssnano": "^4.1.8",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.11.2",
+    "eslint": "^5.13.0",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-react": "^6.10.3",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.5.0",
+    "mini-css-extract-plugin": "^0.5.0",
+    "minimist": "^1.2.0",
+    "postcss-calc": "^7.0.1",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-nested": "^4.1.1",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
+    "react-hot-loader": "^4.8.0",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.6",
+    "webpack-bundle-analyzer": "^3.0.4",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-middleware": "^3.6.1",
+    "webpack-hot-middleware": "^2.24.3",
+    "webpack-merge": "^4.2.1"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}

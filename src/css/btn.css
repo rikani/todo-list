@@ -1,0 +1,38 @@
+.btn {
+  font-size: .7rem;
+  font-weight: 300;
+  color: #222222;
+  text-decoration: none;
+  outline: none;
+  box-sizing: border-box;
+  text-align: center;
+  display: inline-block;
+  white-space: nowrap;
+  cursor: pointer;
+  padding: 0 calc(.5rem - 1px);
+  position: relative;
+  border-radius: .5rem;
+  height: 1.4rem;
+  line-height: 0.8rem;
+  border: 1px solid #9499a8;
+}
+
+.btn_pressed {
+  background-color: #c5c5c5;  
+}
+
+.btn:hover {
+  background-color: #e6e6e6;
+}
+
+.btn:focus {
+  box-shadow: 0 0 2px 2px #99c7e6;
+}
+
+.btn_accept {
+  border-color: #4caf50;
+}
+
+.btn_accept:hover {
+  background-color: #f2fff3;
+}

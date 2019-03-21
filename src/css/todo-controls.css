@@ -1,0 +1,34 @@
+.todo-controls {
+  margin-top: .8rem;
+  background-color: #fff;
+  border: 1px solid #a5a5a5;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  font-size: .8rem;
+}
+
+.todo-controls__count {
+  font-style: italic;
+  flex-grow: 1;
+  width: 33%;
+}
+
+.todo-controls__actions {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 33%;
+  margin: 0 1rem;
+}
+
+.todo-controls__clear {
+  flex-grow: 1;
+  width: 33%;
+  text-align: right;
+}
+
+.todo-controls__item {
+  margin: 0 .2rem;
+}
