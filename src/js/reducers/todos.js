@@ -1,71 +1,55 @@
-import { objectDelete, updateStorage } from 'Utils/utils.js'
+import { objectDelete } from 'Utils/utils.js'
 
-const key = 'todos'
-const todos = localStorage.getItem(key)
-
-const initialState = (todos && JSON.parse(todos)) || {}
-
-export default function(state = initialState, action) {
-  let newObj = state
+export default function(state = {}, action) {
   switch (action.type) {
     case 'TODO_ADD': {
-      newObj = { ...state, [action.todo.id]: action.todo}
-      updateStorage(key, newObj)
-      break
+      return { ...state, [action.todo.id]: action.todo}
     }
     case 'TODO_DELETE': {
-      newObj = objectDelete(state, action.id)
-      updateStorage(key, newObj)
-      break
+      return objectDelete(state, action.id)
     }
     case 'TODO_UPDATE': {
-      newObj = {
+      return {
         ...state,
         [action.id]: {
           ...state[action.id],
           title: action.title,
         },
       }
-      updateStorage(key, newObj)
-      break
     }
     case 'TODO_TOGGLE': {
-      newObj = {
+      return {
         ...state,
         [action.id]: {
           ...state[action.id],
           complete: !state[action.id].complete,
         },
       }
-      updateStorage(key, newObj)
-      break
     }
     case 'TODO_TOGGLE_ALL': {
-      Object.values(newObj).forEach( todo => {
-        newObj = {
-          ...newObj,
+      let newState = {}
+      Object.values(state).forEach( todo => {
+        newState = {
+          ...newState,
           [todo.id]: {
-            ...newObj[todo.id],
+            ...state[todo.id],
             complete: action.complete,
           },
         }
       })
-
-      updateStorage(key, newObj)
-      break
+      return newState
     }
     case 'TODO_REMOVE_COMLETED': {
-      Object.values(newObj).forEach( todo => {
+      let newState = state
+      Object.values(newState).forEach( todo => {
         if (todo.complete) {
-          newObj = objectDelete(newObj, todo.id)
+          newState = objectDelete(newState, todo.id)
         }
       })
-      updateStorage(key, newObj)
-      break
+      return newState
     }
     default: {
-      updateStorage(key, newObj)
+      return state
     }
   }
-  return newObj
 }
