@@ -22,9 +22,9 @@ class TodoControls extends React.Component {
         <div className="todo-controls">
           <div className="todo-controls__count">{`${active.length} item${active.length === 1 ? '' : 's'} left`}</div>
           <div className="todo-controls__actions">
-            <FilterButton className="todo-controls__item" type={SHOW_ALL} active={filter}>All</FilterButton>
-            <FilterButton className="todo-controls__item" type={SHOW_ACTIVE} active={filter}>Active</FilterButton>
-            <FilterButton className="todo-controls__item" type={SHOW_COMPLETED} active={filter}>Completed</FilterButton>
+            <FilterButton className="todo-controls__item" type={SHOW_ALL} active={filter === SHOW_ALL}>All</FilterButton>
+            <FilterButton className="todo-controls__item" type={SHOW_ACTIVE} active={filter === SHOW_ACTIVE}>Active</FilterButton>
+            <FilterButton className="todo-controls__item" type={SHOW_COMPLETED} active={filter === SHOW_COMPLETED}>Completed</FilterButton>
           </div>
           <div className="todo-controls__clear">
             {completed &&
