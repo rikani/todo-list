@@ -8,7 +8,6 @@ import { connect } from 'react-redux'
 class TodoItem extends React.Component {
   state = {
     editing: false,
-    tmp: '',
   }
 
   constructor(props) {
@@ -19,15 +18,8 @@ class TodoItem extends React.Component {
     this.handleClick = this.handleClick.bind(this)
     this.handleChnage = this.handleChnage.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
-    this.handleEdit = this.handleEdit.bind(this)
     this.handleBlur = this.handleBlur.bind(this)
     this.handleKeyDown = this.handleKeyDown.bind(this)
-  }
-
-  componentDidMount() {
-    this.setState({
-      tmp: this.props.title,
-    })
   }
 
   render() {
@@ -44,8 +36,6 @@ class TodoItem extends React.Component {
           ref={this.input}
           type="text"
           className="todo-item__editor"
-          value={this.state.tmp}
-          onChange={this.handleEdit}
           onBlur={this.handleBlur}
           onKeyDown={this.handleKeyDown}
         />
@@ -58,6 +48,7 @@ class TodoItem extends React.Component {
     this.setState({
       editing: true,
     }, () => {
+      this.input.current.value = this.props.title
       this.input.current.focus()
     })
   }
@@ -66,18 +57,12 @@ class TodoItem extends React.Component {
     this.props.dispatch(todoToggle(this.props.id))
   }
 
-  handleEdit(e) {
-    this.setState({
-      tmp: e.target.value,
-    })
-  }
-
   handleBlur() {
     this.submitTitle()
   }
 
   handleKeyDown(e) {
-    if (e.keyCode === KEY_ENTER && this.state.tmp.length) {
+    if (e.keyCode === KEY_ENTER && this.input.current.value.length) {
       this.submitTitle()
     }
   }
@@ -87,7 +72,7 @@ class TodoItem extends React.Component {
   }
 
   submitTitle() {
-    this.props.dispatch(todoUpdate(this.props.id, this.state.tmp))
+    this.props.dispatch(todoUpdate(this.props.id, this.input.current.value))
     this.setState({
       editing: false,
     })
